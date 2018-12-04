@@ -101,10 +101,8 @@ gulp.task('scripts', () => {
 
 // Connect and start a local php server using gulp-connect-php
 gulp.task('connect-sync', () => {
-	connect.server({}, () => {
-		browserSync({
-			proxy: '127.0.0.1:8000'
-		});
+	browserSync.init({
+		server: { baseDir: './' }
 	});
 
 	gulp.watch(paths.html).on('change', () => {
