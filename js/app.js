@@ -64,24 +64,22 @@ var user = {
 };
 
 
-// multi Select library
- $("select").multipleSelect({
-    filter: true
-});
-
-
 // populate select
-
-$(".mult-select").each(function(index) {
-
+$("select.mult-select").each(function(index) { 
     var allItemsName = $(this).attr('allItems');
-    
     var allItems = window[allItemsName];
 
-    console.log(allItems);
-
-    for (var i = 0; i <= allItems.length; i++) {
-        console.log(allItems[i])
-        $(this).append('<option value="' + allItems[i].name + '">' + allItems[i].name + '</option>');
+    for (var i = 0; i < allItems.length; i++) {
+        $(this).append('<option class="'+ allItems[i].name + i +'" value="' + allItems[i].name + '">' + allItems[i].name + '</option>');
     }
 });
+
+// multi select plugin
+ $("select.mult-select").multipleSelect({
+    filter: true,
+    onClick: function(view) {
+        console.log($('#departmentsSelect').multipleSelect('getSelects'));
+    }
+});
+
+ 
